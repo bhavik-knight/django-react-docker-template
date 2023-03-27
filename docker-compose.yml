@@ -17,7 +17,6 @@ services:
   frontend:
     image: react-vite-docker
     container_name: frontend-container
-    restart: always
 
     build:
       context: ./react
