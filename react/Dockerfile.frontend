@@ -2,12 +2,12 @@ FROM node:19
 
 WORKDIR /home/ubuntu/webapp
 RUN npm create vite frontend -- --template react
-
 WORKDIR /home/ubuntu/webapp/frontend
+
 COPY ./frontend/package.json .
 RUN npm install
 
-COPY . .
+COPY ./frontend .
 
-CMD ["npm", "run", "dev", "--", "--port", "3000"]
+CMD ["npm", "run", "dev"]
 EXPOSE 2019
