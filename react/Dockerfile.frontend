@@ -22,5 +22,5 @@ COPY ./frontend .
 # expose container port: 2019
 EXPOSE 2019
 
-# run server on port 3000 (default is for vite if not changed in vite.config.js file)
-CMD ["npm", "run", "dev", "--", "--port", "3000"]
+# run server on port 3000 (default:5173 for vite if not changed in vite.config.js file)
+CMD ["npm", "run", "dev"]
