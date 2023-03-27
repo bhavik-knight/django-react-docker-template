@@ -10,14 +10,14 @@ RUN npm create vite frontend -- --template react
 # move to project dir in the container
 WORKDIR /home/ubuntu/webapp/frontend
 
+# install packages
+RUN npm install
+
 # copy local package.json to container project
 COPY ./frontend .
 
 # install packages
 RUN npm install
-
-# copy everything from the local frontend to the container frontend
-# COPY ./frontend .
 
 # expose container port: 2019
 EXPOSE 2019
