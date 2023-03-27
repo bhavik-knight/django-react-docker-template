@@ -1,5 +1,5 @@
 # base image is node version 19
-FROM node:19
+FROM node:18
 
 # create a working directory in the container
 WORKDIR /home/ubuntu/webapp
