@@ -1,13 +1,26 @@
+# base image is node version 19
 FROM node:19
 
+# create a working directory in the container
 WORKDIR /home/ubuntu/webapp
+
+# create react project with vite  in the container
 RUN npm create vite frontend -- --template react
+
+# move to project dir in the container
 WORKDIR /home/ubuntu/webapp/frontend
 
+# copy local package.json to container project
 COPY ./frontend/package.json .
+
+# install packages
 RUN npm install
 
+# copy everything from the local frontend to the container frontend
 COPY ./frontend .
 
-CMD ["npm", "run", "dev"]
+# expose container port: 2019
 EXPOSE 2019
+
+# run server on port 3000 (default is for vite if not changed in vite.config.js file)
+CMD ["npm", "run", "dev", "--", "--port", "3000"]

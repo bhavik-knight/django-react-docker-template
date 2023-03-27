@@ -1,13 +1,24 @@
+# base image python 3.8
 FROM python:3.8
 ENV PYTHONUNBUFFERED 1
 
+# create working dir in the container
 WORKDIR /home/ubuntu/webapp
 
+# copy requirements file in the working dir in the container
 COPY requirements.txt .
+
+# install requirements
 RUN pip install --no-cache-dir --user -r requirements.txt
 
+# copy everything from the current dir to the wokring dir in the container
 COPY . .
+
+# migrate command for django
 RUN python3 backend/manage.py migrate
 
-CMD ["python3", "backend/manage.py", "runserver", "0.0.0.0:8000"]
+# expose container's port 1920
 EXPOSE 1920
+
+# run server on port 8000
+CMD ["python3", "backend/manage.py", "runserver", "0.0.0.0:8000"]
